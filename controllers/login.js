@@ -1,4 +1,5 @@
 const express 	= require('express');
+const fs			= require('fs');
 const router 	= express.Router();
 
 router.get('/', (req, res)=>{
@@ -6,19 +7,13 @@ router.get('/', (req, res)=>{
 });
 
 router.post('/', (req, res)=>{
-	var userlist = [
-		['1', 'alamin', 'abc@gmail.com', '123'],
-		['2', 'pqr', 'pqr@gmail.com', '123'],
-		['3', 'xyz', 'xyz@gmail.com', '123'],
-		['4','imti','imti@gmail.com','1']
-	];
-	req.session.userlist = userlist;
-	req.session.uid = '4';
-	userlist = req.session.userlist;
+	var data=fs.readFileSync('./controllers/userlist.json', 'utf8');
+	var userlist=JSON.parse(data);
+	req.session.uid = '3';
 	var loggedin = false;
 
 	userlist.forEach(function(user){
-		if(req.body.username == user[1] && req.body.password == user[3]){
+		if(req.body.username == user.username && req.body.password == user.password){
 			loggedin = true;
 		}
 	});
@@ -30,7 +25,10 @@ router.post('/', (req, res)=>{
 	}else{
 		res.redirect('/login');
 	}
-});
+}); 
 
 
 module.exports = router;
+
+
+
