@@ -3,14 +3,7 @@ const router 	= express.Router();
 
 router.get('/', (req, res)=>{
 	
-	/*if(req.session.uname != ""){
-		res.render('home/index', {name: 'alamin', id:'123'});		
-	}else{
-		res.redirect('/login');
-	}*/
-	
-
-	if(req.cookies['uname'] != ""){
+	if(req.cookies['uname'] != null){
 		res.render('home/index', {name: 'alamin', id:'123'});		
 	}else{
 		res.redirect('/login');
@@ -19,15 +12,8 @@ router.get('/', (req, res)=>{
 
 
 router.get('/userlist', (req, res)=>{
-	if(req.cookies['uname'] != ""){
 
-		// var students = [
-		// 	['1', 'alamin', 'abc@gmail.com', '1243'],
-		// 	['2', 'pqr', 'pqr@gmail.com', '1243'],
-		// 	['3', 'xyz', 'xyz@gmail.com', '1243']
-		// ];
-
-		//var data = {users: students};
+	if(req.cookies['uname'] != null){
 		res.render('home/userlist', {users: req.session.userlist});		
 	}else{
 		res.redirect('/login');
