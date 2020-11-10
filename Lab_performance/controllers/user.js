@@ -16,7 +16,7 @@ router.get('/create', (req, res)=>{
 
 
 router.post('/create', (req, res)=>{
-
+	
 	var user = {
 		name: req.body.name,
 		username: req.body.username,
@@ -25,7 +25,7 @@ router.post('/create', (req, res)=>{
 		contactno: req.body.contactno,
 		type: 1
 	};
-
+	
 	userModel.insert(user,function(status){
 		if(status){
 			res.redirect('/Admin_home/userlist');
@@ -59,3 +59,4 @@ router.post('/delete/:id', (req, res)=>{
 });
 
 module.exports = router;
+
