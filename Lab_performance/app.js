@@ -1,12 +1,13 @@
 //declaration
-const express 			= require('express');
+const express 			= require('express');	
 const bodyParser 		= require('body-parser');
 const exSession 		= require('express-session');
 const cookieParser 		= require('cookie-parser');
 
 const login				= require('./controllers/login');
 const logout			= require('./controllers/logout');
-const home				= require('./controllers/home');
+const admin_home		= require('./controllers/Admin_home');
+const employee_home		= require('./controllers/Employee_home');
 const user				= require('./controllers/user');
 const app				= express();
 const port				= 3000;
@@ -23,7 +24,8 @@ app.use(exSession({secret: 'secret value', saveUninitialized: true, resave: fals
 
 
 app.use('/login', login);
-app.use('/home', home);
+app.use('/Admin_home', admin_home);
+app.use('Employee_home',employee_home);
 app.use('/logout', logout);
 app.use('/user', user);
 

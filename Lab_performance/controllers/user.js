@@ -18,14 +18,17 @@ router.get('/create', (req, res)=>{
 router.post('/create', (req, res)=>{
 
 	var user = {
+		name: req.body.name,
 		username: req.body.username,
 		password: req.body.password,
-		type: req.body.type
+		companyname: req.body.companyname,
+		contactno: req.body.contactno,
+		type: 1
 	};
 
 	userModel.insert(user,function(status){
 		if(status){
-			res.redirect('/home/userlist');
+			res.redirect('/Admin_home/userlist');
 		}else{
 			res.render('user/create');
 		}

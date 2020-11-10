@@ -1,26 +1,20 @@
-const express 	= require('express');
-const userModel = require.main.require('./models/userModel');
-const router 	= express.Router();
-
-router.get('*',  (req, res, next)=>{
-	if(req.cookies['uname'] == null){
-		res.redirect('/login');
-	}else{
-		next();
-	}
+const express 		= require('express');
+const router 		= express.Router();
+router.get('*',(req, res, next) => {
+    if(req.session.username!=null){
+        next();
+    }
+    else{
+        req.session.destroy();
+        res.redirect('/login');
+    }
 });
+router.get('/',(req, res) => {
+    var user = {
 
-router.get('/', (req, res)=>{
-	res.render('home/index', {name: 'alamin', id:'123'});
+    };
+    user.username = req.session.username;
+    user.password = req.session.password;
+    res.render('home/index', {user:user});
 });
-
-
-router.get('/userlist', (req, res)=>{
-
-	userModel.getAll(function(results){
-		res.render('home/userlist', {users: results});
-	});
-
-})
-
 module.exports = router;
