@@ -71,25 +71,12 @@ router.post('/edit/:id', (req, res)=>{
 });
 
 router.get('/delete/:id', (req, res)=>{
-	userModel.getById(req.params.id,function(result){
-		var user = {
-			name: result.name,
-			username: result.username,
-			password: result.password,
-			companyname: result.companyname,
-			contactno: result.contactno,
-			type: 1
-		};
-		res.render('user/delete', user);
-	});
+	var user = {username: 'alamin', password: '123', email: 'email@gmail.com'};
+	res.render('user/delete', user);
 });
 
 router.post('/delete/:id', (req, res)=>{
-	userModel.delete(req.params.id,function(status){
-		if(status){
-			res.redirect('/Admin_home/userlist');
-		}
-	});
+	res.redirect('/home/userlist');
 });
 
 module.exports = router;
