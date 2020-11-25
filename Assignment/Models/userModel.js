@@ -13,4 +13,11 @@ module.exports= {
 			}
 		});
 	},
+
+	insert: function(user, callback){
+		var sql = "INSERT INTO users(id, name,username, password,email,phone,type) VALUES ('"+user.id+"','"+user.name+"','"+user.username+"','"+user.password+"','"+user.email+"','"+user.phone+"','"+user.type+"')";
+		db.execute(sql,function(status){
+			callback(status);
+		});
+	},
 };

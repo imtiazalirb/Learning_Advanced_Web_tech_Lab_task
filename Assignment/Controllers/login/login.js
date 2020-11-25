@@ -24,6 +24,7 @@ router.post('/', (req, res)=>{
 				//res.exSession.id= parseInt(id);
 				//res.redirect('/Delivery/Delivery_home');
                 console.log("Success user type return");
+				res.redirect('/');
 			}
 			else{
 				//res.redirect('/');
