@@ -3,8 +3,9 @@ const bodyParser 		= require('body-parser');
 const exSession 		= require('express-session');
 const cookieParser 		= require('cookie-parser');
 const login				= require('./Controllers/login/login');
+const logout			= require('./Controllers/logout');
 const signup			= require('./Controllers/signup/signup');
-//const admin				= require('./Controllers/Admin');
+const admin				= require('./Controllers/admin/admin');
 //const user				= require('./Controllers/user');
 const app				= express();
 const port				= 3000;
@@ -19,8 +20,9 @@ app.use(cookieParser());
 app.use(exSession({secret: 'secret value', saveUninitialized: true, resave: false}));
 
 app.use('/login', login);
+app.use('/logout', logout);
 app.use('/signup', signup);
-//app.use('/Admin', admin);
+app.use('/admin/admin', admin);
 //app.use('/user',user);
 
 //router
