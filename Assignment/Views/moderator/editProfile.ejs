@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Document</title>
+	<title>Profile</title>
     <link href="../assets/css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -14,7 +14,7 @@
 <body>
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-light" >
-  <a class="navbar-brand mb-2" href="/admin/admin">FTP</a>
+  <a class="navbar-brand mb-2" href="#">FTP</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -32,29 +32,18 @@
           </div>
         </li>
 
-
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Admin & Moderator
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/admin/admin/addModerator">Register</a>
-            <a class="dropdown-item" href="">All Moderator</a>
-          </div>
-        </li>
-
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Profile
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/admin/admin/viewProfile">My Profile</a>
+            <a class="dropdown-item" href="/">My Profile</a>
             <a class="dropdown-item" href="/logout">Logout</a>
           </div>
         </li>
 
 		<li class="nav-item">
-          <a class="nav-link" href="">File Requests</a>
+          <a class="nav-link" href="/Delivery/Delivery_home/invoiceList">File Requests</a>
         </li>
 
     </ul>
@@ -68,5 +57,45 @@
   </div>
 </nav>
 
+<h3 class="display-5 text-center my-4">Personal Information</h3>
+	<div class="container">
+		<form action="" method="post">
+
+			<div class="form-row">
+			  <div class="col-md-8 mb-3">
+				<label>Name</label>
+				<input type="text" name="name" readonly value="<%=name%>" class="form-control-plaintext" placeholder="" required>
+			  </div>
+			</div><hr>
+
+			<div class="form-row">
+				<div class="col-md-4 mb-3">
+				  <label>Email</label>
+				  <input type="text" name="email"  value="<%=email%>" class="form-control" placeholder="Email required" required>
+				</div>
+				<div class="col-md-4 mb-3">
+				  <label>Phone</label>
+				  <input type="text" name="phone"  value="<%=phone%>" class="form-control" placeholder="Phone required" required>
+				</div>
+			</div><hr>
+
+			<div class="form-row">
+				<div class="col-md-4 mb-3">
+				  <label>Username</label>
+				  <input type="text" name="username" readonly value="<%=username%>" class="form-control-plaintext" placeholder="" required>
+				</div>
+				<div class="col-md-4 mb-3">
+				  <label>Phone</label>
+				  <input type="password" name="password"  value="<%=password%>" class="form-control" placeholder="Password Required" required>
+				</div>
+			</div><hr>
+
+			<div class="form-group text-center">
+                    <input type="submit" name="editProfile" class="btn btn-warning" value="Update Profile" class="form-control">
+					<a type="submit" class="btn btn-danger" href="/moderator/moderator/viewProfile">Cancel</a>
+            </div>
+
+		</form>
+	</div>
 </body>
 </html>

@@ -27,4 +27,36 @@ router.get('/viewProfile',(req,res)=>{
 	});
 });
 
+router.get('/editProfile',(req,res)=>{
+	userModel.getById(req.cookies['id'],function(result){
+		console.log(result);
+		var user = {
+			name: result.name,
+			username: result.username,
+			password: result.password,
+			email: result.email,
+			phone: result.phone
+		};
+		res.render('moderator/editProfile', user);
+	});
+});
+
+router.post('/editProfile',(req,res)=>{
+	var user = {
+			id: req.cookies["id"],
+			name: req.body.name,
+			username: req.body.username,
+			password: req.body.password,
+			email: req.body.email,
+			phone: req.body.phone
+	};
+	userModel.update(user,function(status){
+		if(status){
+			res.redirect('/moderator/moderator/viewProfile');
+		}
+		else{
+			res.render('moderator/editProfile', user);
+		}
+	});
+});
 module.exports = router;

@@ -65,29 +65,38 @@
     <div class="col-md-8 mb-3">
       <fieldset >
       <label for="validationCustom01">Name</label>
-      <input type="text" name="name" readonly value="<%= name %>" class="form-control-plaintext" id="validationCustom01" placeholder="" required>
+      <input type="text" name="name" readonly value="<%=name%>" class="form-control-plaintext" id="validationCustom01" placeholder="" required>
     </div>
   </div><hr>
 
   <div class="form-row">
-    <div class="col-md-4 mb-3">
-      <fieldset >
-      <label for="validationCustom01">Username</label>
-      <input type="text" name="body_type" readonly value="<%= username %>" class="form-control-plaintext" id="validationCustom01" placeholder="" required>
-    </div>
       <div class="col-md-4 mb-3">
         <fieldset >
         <label for="validationCustom01">Email</label>
-        <input type="text" name="year" readonly value="<%= email %>" class="form-control-plaintext" id="validationCustom01" placeholder="" required>
+        <input type="text" name="email" readonly value="<%=email%>" class="form-control-plaintext" id="validationCustom01" placeholder="" required>
       </div>
       <div class="col-md-4 mb-3">
         <fieldset >
         <label for="validationCustom01">Phone</label>
-        <input type="text" name="color" readonly value="<%= phone %>" class="form-control-plaintext" id="validationCustom01" placeholder="" required>
+        <input type="text" name="phone" readonly value="<%=phone%>" class="form-control-plaintext" id="validationCustom01" placeholder="" required>
       </div>
   </div><hr>
+
+  <div class="form-row">
+	  <div class="col-md-4 mb-3">
+        <fieldset >
+        <label for="validationCustom01">Username</label>
+        <input type="text" name="username" readonly value="<%=username%>" class="form-control-plaintext" id="validationCustom01" placeholder="" required>
+      </div>
+  	<div class="col-md-4 mb-3">
+        <fieldset >
+        <label for="validationCustom01">Password</label>
+        <input type="password" name="password" readonly value="<%=password%>" class="form-control-plaintext" id="validationCustom01" placeholder="" required>
+      </div>
+  </div>
+
   <div class="text-center">
-            <a type="button" class="btn btn-primary">Edit Info</a>
+            <a class="btn btn-primary" href="/moderator/moderator/editProfile">Edit Info</a>
 			<a type="submit" class="btn btn-danger" href="/moderator/moderator">Cancel</a>
           </div>
 </body>

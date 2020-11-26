@@ -14,7 +14,7 @@
 <body>
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-light" >
-  <a class="navbar-brand mb-2" href="#">FTP</a>
+  <a class="navbar-brand mb-2" href="/admin/admin">FTP</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -48,7 +48,7 @@
             Profile
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/">My Profile</a>
+            <a class="dropdown-item" href="/admin/admin/viewProfile">My Profile</a>
             <a class="dropdown-item" href="/logout">Logout</a>
           </div>
         </li>
@@ -82,22 +82,22 @@
 			<div class="form-row">
 				<div class="col-md-4 mb-3">
 				  <label>Email</label>
-				  <input type="text" name="email"  value="<%=email%>" class="form-control" id="validationCustom01" placeholder="" required>
+				  <input type="text" name="email"  value="<%=email%>" class="form-control" placeholder="Email required" required>
 				</div>
 				<div class="col-md-4 mb-3">
 				  <label>Phone</label>
-				  <input type="text" name="phone"  value="<%=phone%>" class="form-control" id="validationCustom01" placeholder="" required>
+				  <input type="text" name="phone"  value="<%=phone%>" class="form-control" placeholder="Phone required" required>
 				</div>
 			</div><hr>
 
 			<div class="form-row">
 				<div class="col-md-4 mb-3">
 				  <label>Username</label>
-				  <input type="text" name="username" readonly value="<%=username%>" class="form-control-plaintext" id="validationCustom01" placeholder="" required>
+				  <input type="text" name="username" readonly value="<%=username%>" class="form-control-plaintext" placeholder="" required>
 				</div>
 				<div class="col-md-4 mb-3">
 				  <label>Phone</label>
-				  <input type="password" name="password"  value="<%=password%>" class="form-control" id="validationCustom01" placeholder="" required>
+				  <input type="password" name="password"  value="<%=password%>" class="form-control" placeholder="Password Required" required>
 				</div>
 			</div><hr>
 
