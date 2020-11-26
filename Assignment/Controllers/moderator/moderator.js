@@ -14,4 +14,17 @@ router.get('/', (req, res)=>{
 	res.render('moderator/index');
 });
 
+router.get('/viewProfile',(req,res)=>{
+	userModel.getById(req.cookies['id'],function(result){
+		var user = {
+			name: result.name,
+			username: result.username,
+			password: result.password,
+			email: result.email,
+			phone: result.phone
+		};
+		res.render('moderator/viewProfile', user);
+	});
+});
+
 module.exports = router;

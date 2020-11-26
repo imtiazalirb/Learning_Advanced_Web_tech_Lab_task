@@ -37,4 +37,18 @@ router.post('/addModerator',(req,res)=>{
 		}
 	});
 });
+
+router.get('/viewProfile',(req,res)=>{
+	userModel.getById(req.cookies['id'],function(result){
+		var user = {
+			name: result.name,
+			username: result.username,
+			password: result.password,
+			email: result.email,
+			phone: result.phone
+		};
+		res.render('admin/viewProfile', user);
+	});
+});
+
 module.exports = router;

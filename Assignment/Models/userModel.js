@@ -20,4 +20,14 @@ module.exports= {
 			callback(status);
 		});
 	},
+
+	getById: function(id, callback){
+		console.log("Get by uid")
+		var sql = "select * from users where id='"+id+"'";
+		db.getResults(sql, function(results){
+			if(results.length >0 ){
+				callback(results[0]);
+			}
+		});
+	},
 };
