@@ -9,7 +9,7 @@ router.get('/', (req, res)=>{
 });
 
 router.post('/', (req, res)=>{
-	console.log("on signup js")
+	console.log("on signup inject to sql")
 	var user = {
 		name: req.body.name,
 		username: req.body.username,

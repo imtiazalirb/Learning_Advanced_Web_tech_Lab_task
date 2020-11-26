@@ -79,7 +79,25 @@
 
 	padding-left:600px;
     padding-top:100px;
+}
+
+/*navbar*/
 
 
+/*Navbar brand*/
 
+.navbar .navbar-brand{
+
+  font-weight: lighter;
+  font-size: 0.8cm;
+
+}
+
+/*--NAVBAR > SEARCH FORM---*/
+
+.navbar .nav-form{
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-right: 0px;
+  margin-left: 0px;
 }

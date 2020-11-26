@@ -16,7 +16,7 @@ router.post('/', (req, res)=>{
 	userModel.validate(user, function(result){
 			console.log(result);
 			var status = JSON.stringify(result.type);
-			var uid = JSON.stringify(result.user_id);
+			var uid = JSON.stringify(result.id);
 			console.log(status);
 			if(status == 0){
 				res.cookie('uname', req.body.username);
@@ -24,7 +24,7 @@ router.post('/', (req, res)=>{
 				//res.exSession.id= parseInt(id);
 				//res.redirect('/Delivery/Delivery_home');
                 console.log("Success user type return");
-				res.redirect('/');
+				res.redirect('/admin/admin');
 			}
 			else{
 				//res.redirect('/');
