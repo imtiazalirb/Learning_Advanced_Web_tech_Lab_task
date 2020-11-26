@@ -21,16 +21,12 @@ router.post('/', (req, res)=>{
 			if(status == 0){
 				res.cookie('username', req.body.username);
 				res.cookie('id', parseInt(uid));
-				//res.exSession.id= parseInt(id);
-				//res.redirect('/Delivery/Delivery_home');
                 console.log("Success user type return - admin");
 				res.redirect('/admin/admin');
 			}
 			else if(status == 1){
-				res.cookie('uname', req.body.username);
+				res.cookie('username', req.body.username);
 				res.cookie('id', parseInt(uid));
-				//res.exSession.id= parseInt(id);
-				//res.redirect('/Delivery/Delivery_home');
                 console.log("Success user type return - moderator");
 				res.redirect('/moderator/moderator');
 			}

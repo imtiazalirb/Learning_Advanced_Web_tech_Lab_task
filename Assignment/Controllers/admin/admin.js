@@ -39,7 +39,7 @@ router.post('/addModerator',(req,res)=>{
 });
 
 router.get('/viewProfile',(req,res)=>{
-	userModel.getById(req.cookies['id'],function(result){
+	userModel.getById(req.cookies['uid'],function(result){
 		var user = {
 			name: result.name,
 			username: result.username,
@@ -48,6 +48,39 @@ router.get('/viewProfile',(req,res)=>{
 			phone: result.phone
 		};
 		res.render('admin/viewProfile', user);
+	});
+});
+
+router.get('/editProfile',(req,res)=>{
+	userModel.getById(req.cookies['id'],function(result){
+		console.log(result);
+		var user = {
+			name: result.name,
+			username: result.username,
+			password: result.password,
+			email: result.email,
+			phone: result.phone
+		};
+		res.render('admin/editProfile', user);
+	});
+});
+
+router.post('/editProfile',(req,res)=>{
+	var user = {
+			id: req.cookies["id"],
+			name: req.body.name,
+			username: req.body.username,
+			password: req.body.password,
+			email: req.body.email,
+			phone: req.body.phone
+	};
+	userModel.update(user,function(status){
+		if(status){
+			res.redirect('/admin/admin/viewProfile');
+		}
+		else{
+			res.render('admin/editProfile', user);
+		}
 	});
 });
 
