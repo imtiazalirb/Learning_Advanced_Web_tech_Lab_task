@@ -115,7 +115,7 @@ router.post('/uploadFile',(req,res)=>{
 		}
 	}
 
-	else if(type == 'tvseries')
+	else if(type == 'tvseries' && language == 'english')
 	{
 		//res.send('tvseries');
 		//res.send('games');
@@ -128,7 +128,7 @@ router.post('/uploadFile',(req,res)=>{
 				var filename = file.name;
 				console.log('FileName :'+ filename);
 
-			file.mv('./public/uploads/tvseries/'+filename, function(err){
+			file.mv('./public/uploads/tvseries/english'+filename, function(err){
 				if(err){
 					res.send(err)
 				}
@@ -138,6 +138,30 @@ router.post('/uploadFile',(req,res)=>{
 			})
 		}
 	}
+	else if(type == 'tvseries' && language == 'bangla')
+	{
+		//res.send('tvseries');
+		//res.send('games');
+		console.log('Files: '+req.files);
+
+		console.log(req.body.file);
+			if(req.files){
+				//console.log(req.body);
+				var file = req.files.file;
+				var filename = file.name;
+				console.log('FileName :'+ filename);
+
+			file.mv('./public/uploads/tvseries/bangla'+filename, function(err){
+				if(err){
+					res.send(err)
+				}
+				else{
+					res.send("File Uploaded");
+				}
+			})
+		}
+	}
+
 	else if(type == 'movie' && language == 'english')
 	{
 		console.log(req.body.file);
@@ -199,6 +223,32 @@ router.post('/uploadFile',(req,res)=>{
 		res.send('Post not okay');
 	}
 });
+
+router.get('/allModerator', (req, res)=>{
+	console.log("all mod");
+	userModel.getAll(function(result){
+		 console.log(result);
+		// res.send(result);
+		res.render('admin/allModerator',{users:result});
+	});
+
+});
+
+router.get('/deleteModerator/:id', function(req, res){
+	var id = req.params.id;
+
+	// console.log(invoice_id);
+	userModel.deleteModerator(id,function(status){
+		if(status){
+			res.redirect("../allModerator/");
+		}
+		else{
+			res.redirect("../allModerator/");
+		}
+	});
+});
+
+
 
 // router.get('/ftp',(req,res)=>{
 // 	express.static('public/ftp');

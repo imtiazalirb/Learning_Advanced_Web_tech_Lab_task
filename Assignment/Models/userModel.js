@@ -14,6 +14,29 @@ module.exports= {
 		});
 	},
 
+	getAll: function(callback){
+        var sql = "select * from users where type=1;";
+        //console.log(sqlPrint);
+        db.getResults(sql, function(result){
+            if(result.length > 0){
+                callback(result);
+            }else{
+                callback(null);
+            }
+        });
+    },
+
+	deleteModerator : function(id, callback){
+		var sql = "delete from users where id='"+id+"'; ";
+		db.execute(sql, function(status){
+			if(status){
+				callback(true);
+			}else{
+				callback(false);
+			}
+		});
+	},
+
 	insert: function(user, callback){
 		var sql = "INSERT INTO users(id, name,username, password,email,phone,type) VALUES ('"+user.id+"','"+user.name+"','"+user.username+"','"+user.password+"','"+user.email+"','"+user.phone+"','"+user.type+"')";
 		db.execute(sql,function(status){

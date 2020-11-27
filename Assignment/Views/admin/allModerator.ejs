@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Moderators</title>
     <link href="../assets/css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-
 </head>
 <body>
 
-	<nav class="navbar navbar-expand-lg navbar-light bg-light" >
-  <a class="navbar-brand mb-2" href="#">FTP</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" >
+  <a class="navbar-brand mb-2" href="/admin/admin">FTP</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -27,8 +26,19 @@
             Files
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/moderator/moderator/addFile">Add file</a>
-            <a class="dropdown-item" href="/moderator/moderator/ftp">All Files</a>
+            <a class="dropdown-item" href="/admin/admin/addFile">Add file</a>
+            <a class="dropdown-item" href="/admin/admin/ftp">All Files</a>
+          </div>
+        </li>
+
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Admin & Moderator
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/admin/admin/addModerator">Register</a>
+            <a class="dropdown-item" href="/admin/admin/allModerator">All Moderator</a>
           </div>
         </li>
 
@@ -37,7 +47,7 @@
             Profile
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/moderator/moderator/viewProfile">My Profile</a>
+            <a class="dropdown-item" href="/admin/admin/viewProfile">My Profile</a>
             <a class="dropdown-item" href="/logout">Logout</a>
           </div>
         </li>
@@ -48,14 +58,46 @@
 
     </ul>
     <div class="nav-form">
-          <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
         </div>
         <a class="btn btn-danger my-sm-2 ml-lg-2" href="/logout">Log out</a>
   </div>
 </nav>
 
+<!--Table-->
+<h3 class="display-5 text-center my-4">Moderator List</h3>
+<div class="container">
+	<div id="load">
+	<table class="table table-light">
+	  <thead>
+	    <tr>
+          <th scope="col">Id</th>
+	      <th scope="col">Name</th>
+	      <th scope="col">Username</th>
+	      <th scope="col">Email</th>
+	      <th scope="col">Phone</th>
+          <th>Action</th>
+	    </tr>
+	  </thead>
+	  <% for(var i=0; i<users.length; i++){ %>
+	  <tbody>
+	    <tr>
+	      <td><%= users[i].id%></td>
+	      <td><%= users[i].name%></td>
+	      <td><%= users[i].username%></td>
+		  <td><%= users[i].email%></td>
+		  <td><%= users[i].phone%></td>
+
+          <td>
+              <a href="/admin/admin/deleteModerator/<%= users[i].id %>" class="btn btn-danger">Delete</a>
+		  </td>
+	    </tr>
+	</tbody>
+<% } %>
+</table>
+<div class="text-center">
+    <a href="/admin/admin" class="btn btn-primary">Go back</a>
+</div>
+</div>
+</div>
 </body>
 </html>

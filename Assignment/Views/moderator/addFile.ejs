@@ -14,7 +14,7 @@
 <body>
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-light" >
-  <a class="navbar-brand mb-2" href="#">FTP</a>
+  <a class="navbar-brand mb-2" href="/moderator/moderator">FTP</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -48,14 +48,57 @@
 
     </ul>
     <div class="nav-form">
-          <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
         </div>
         <a class="btn btn-danger my-sm-2 ml-lg-2" href="/logout">Log out</a>
   </div>
 </nav>
+<div class="container">
+
+
+        <h3 class="display-5 text-center my-4">File Upload</h3>
+            <div class="container">
+                  <form  method="post" action="/moderator/moderator/uploadFile" enctype="multipart/form-data">
+
+
+                  <div class="form-row">
+                    		 <div class="col-md-4 mb-3">
+                           <label>Type</label>
+                           <select name="type" class="custom-select" required>
+                             <option value="movie">Movie</option>
+                             <option value="tvseries">TV Series</option>
+                           </select>
+                           <div class="invalid-feedback">
+                             Please select a valid type
+                           </div>
+                         </div>
+
+                         <div class="col-md-4 mb-3">
+                       <label for="validationCustom04">Language</label>
+                       <select name="language" class="custom-select" id="validationCustom04" required >
+                         <option selected disabled value="">Choose</option>
+                         <option value="english">English</option>
+                         <option value="bangla">Bangla</option>
+                       </select>
+					   <small id="phonedHelpInline" class="text-muted">
+		                 Chose language
+		               </small>
+                       <div class="invalid-feedback">
+                         Please select a valid type
+                       </div>
+                     </div>
+                  </div>
+
+								  <div class="form-group">
+								    <label>Attach File</label>
+								    <input name='file' type="file" class="form-control-file"
+								  </div>
+  <div class="text-center">
+      <button type="submit" class="btn btn-success" value="submit">Upload</button>
+
+  </div>
+
+</form>
+</div>
 
 </body>
 </html>
