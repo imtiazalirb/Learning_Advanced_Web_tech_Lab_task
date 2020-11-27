@@ -39,7 +39,7 @@ router.post('/addModerator',(req,res)=>{
 });
 
 router.get('/viewProfile',(req,res)=>{
-	userModel.getById(req.cookies['uid'],function(result){
+	userModel.getById(req.cookies['id'],function(result){
 		var user = {
 			name: result.name,
 			username: result.username,
@@ -83,5 +83,134 @@ router.post('/editProfile',(req,res)=>{
 		}
 	});
 });
+router.get('/addFile',(req,res)=>{
+	//console.log('Here on addFile');
+	res.render('admin/addFile');
+});
+
+router.post('/uploadFile',(req,res)=>{
+	console.log(req.body.type);
+	var type = req.body.type;
+	console.log(req.files);
+	if(type == 'games')
+	{
+		//res.send('games');
+		console.log('Files: '+req.files);
+
+		console.log(req.body.file);
+			if(req.files){
+				//console.log(req.body);
+				var file = req.files.file;
+				var filename = file.name;
+				console.log('FileName :'+ filename);
+
+			file.mv('./public/uploads/games/'+filename, function(err){
+				if(err){
+					res.send(err)
+				}
+				else{
+					res.send("File Uploaded");
+				}
+			})
+		}
+	}
+
+	else if(type == 'tvseries')
+	{
+		//res.send('tvseries');
+		//res.send('games');
+		console.log('Files: '+req.files);
+
+		console.log(req.body.file);
+			if(req.files){
+				//console.log(req.body);
+				var file = req.files.file;
+				var filename = file.name;
+				console.log('FileName :'+ filename);
+
+			file.mv('./public/uploads/tvseries/'+filename, function(err){
+				if(err){
+					res.send(err)
+				}
+				else{
+					res.send("File Uploaded");
+				}
+			})
+		}
+	}
+	else if(type == 'movie' && language == 'english')
+	{
+		console.log(req.body.file);
+			if(req.files){
+				//console.log(req.body);
+				var file = req.files.file;
+				var filename = file.name;
+				console.log('FileName :'+ filename);
+
+			file.mv('./public/uploads/movie/english/'+filename, function(err){
+				if(err){
+					res.send(err)
+				}
+				else{
+					res.send("File Uploaded");
+				}
+			})
+		}
+	}
+	else if(type == 'movie' && language == 'bangla')
+	{
+		console.log(req.body.file);
+			if(req.files){
+				//console.log(req.body);
+				var file = req.files.file;
+				var filename = file.name;
+				console.log('FileName :'+ filename);
+
+			file.mv('./public/uploads/movie/bangla/'+filename, function(err){
+				if(err){
+					res.send(err)
+				}
+				else{
+					res.send("File Uploaded");
+				}
+			})
+		}
+	}
+	else if(type == 'software')
+	{
+		console.log(req.body.file);
+			if(req.files){
+				//console.log(req.body);
+				var file = req.files.file;
+				var filename = file.name;
+				console.log('FileName :'+ filename);
+
+			file.mv('./public/uploads/software/'+filename, function(err){
+				if(err){
+					res.send(err)
+				}
+				else{
+					res.send("File Uploaded");
+				}
+			})
+		}
+	}
+	else{
+		res.send('Post not okay');
+	}
+});
+
+// router.get('/ftp',(req,res)=>{
+// 	express.static('public/ftp');
+// 	serveIndex('public/ftp', { icons: true });
+// });
+
+// route.get('/ftp',
+//   express.static('public/ftp'),
+//   serveIndex('public/ftp', { icons: true })
+// )
+
+
+
 
 module.exports = router;
