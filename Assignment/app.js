@@ -11,6 +11,7 @@ const logout			= require('./Controllers/logout');
 const signup			= require('./Controllers/signup/signup');
 const admin				= require('./Controllers/admin/admin');
 const moderator			= require('./Controllers/moderator/moderator');
+const home			    = require('./Controllers/home');
 const app				= express();
 const port				= 3000;
 
@@ -30,24 +31,54 @@ app.use('/logout', logout);
 app.use('/signup', signup);
 app.use('/admin/admin', admin);
 app.use('/moderator/moderator', moderator);
-app.use(
-  '/admin/admin/ftp',
-  express.static('public'),
-  serveIndex('public/uploads', { icons: true })
-)
-
+app.use('/home', home);
 app.use(
   '/ftp',
   express.static('public'),
-  serveIndex('public/uploads', { icons: true })
+  serveIndex('public/uploads/', { icons: true })
 )
 
+app.use(
+  '/ftp/game',
+  express.static('public'),
+  serveIndex('public/uploads/game', { icons: true })
+)
+
+app.use(
+  '/ftp/game/movie/bangla',
+  express.static('public'),
+  serveIndex('public/uploads/movie/bangla', { icons: true })
+)
+
+app.use(
+  '/ftp/game/movie/english',
+  express.static('public'),
+  serveIndex('public/uploads/movie/english', { icons: true })
+)
+
+app.use(
+  '/ftp/game/software',
+  express.static('public'),
+  serveIndex('public/uploads/software', { icons: true })
+)
+
+app.use(
+  '/ftp/game/tvseries/english',
+  express.static('public'),
+  serveIndex('public/uploads/tvseries/english', { icons: true })
+)
+
+app.use(
+  '/ftp/game/tvseries/english',
+  express.static('public'),
+  serveIndex('public/uploads/tvseries/english', { icons: true })
+)
 //app.use('/user',user);
 
 //router
 app.get('/', (req, res)=>{
 	//console.log(listEndpoints(app));
-	res.redirect('/login');
+	res.redirect('/home');
 });
 
 //server startup
