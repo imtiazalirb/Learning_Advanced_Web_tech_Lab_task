@@ -1,5 +1,6 @@
 const express 	= require('express');
-const userModel = require.main.require('./models/userModel');
+const userModel 	= require.main.require('./models/userModel');
+const requestModel		= require.main.require('./models/requestModel');
 const router 	= express.Router();
 
 router.get('*',  (req, res, next)=>{
@@ -244,6 +245,28 @@ router.get('/deleteModerator/:id', function(req, res){
 		}
 		else{
 			res.redirect("../allModerator/");
+		}
+	});
+});
+
+router.get('/fileRequest', (req, res)=>{
+	console.log("all requests");
+	requestModel.getAll(function(result){
+		 console.log(result);
+		// res.send(result);
+		res.render('admin/fileRequest',{requests:result});
+	});
+
+});
+
+router.get('/deleteRequest/:id', function(req, res){
+	var id = req.params.id;
+	requestModel.delete(id,function(status){
+		if(status){
+			res.redirect("../fileRequest/");
+		}
+		else{
+			res.redirect("../fileRequest/");
 		}
 	});
 });

@@ -63,9 +63,9 @@ app.use(
 )
 
 app.use(
-  '/ftp/game/tvseries/english',
+  '/ftp/game/tvseries/bangla',
   express.static('public'),
-  serveIndex('public/uploads/tvseries/english', { icons: true })
+  serveIndex('public/uploads/tvseries/bangla', { icons: true })
 )
 
 app.use(

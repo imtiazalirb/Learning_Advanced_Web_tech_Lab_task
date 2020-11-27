@@ -1,5 +1,6 @@
 const express 	= require('express');
 const userModel = require.main.require('./models/userModel');
+const requestModel = require.main.require('./models/requestModel');
 const router 	= express.Router();
 
 router.get('*',  (req, res, next)=>{
@@ -158,6 +159,16 @@ router.post('/uploadFile',(req,res)=>{
 	else{
 		res.send('Post not okay');
 	}
+});
+
+router.get('/fileRequest', (req, res)=>{
+	console.log("all requests");
+	requestModel.getAll(function(result){
+		 console.log(result);
+		// res.send(result);
+		res.render('moderator/fileRequest',{requests:result});
+	});
+
 });
 
 module.exports = router;

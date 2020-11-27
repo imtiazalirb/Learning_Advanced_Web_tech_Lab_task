@@ -51,11 +51,8 @@
         </li>
 
 		<li class="nav-item">
-          <a class="nav-link" href="/home/requestFile">Request for file</a>
+          <a class="nav-link" href="">Request for file</a>
         </li>
-
-
-
 
     </ul>
     <div class="nav-form">
@@ -63,6 +60,36 @@
         <a class="btn btn-success my-sm-2 ml-lg-2" href="/login">Login</a>
   </div>
 </nav>
+
+
+<h3 class="display-5 text-center my-4">File Request Form</h3>
+	<div class="container">
+		<form method="post" action="">
+		  <div class="form-row">
+			<div class="col-md-4 mb-3">
+			  <label for="validationCustom01">File Name</label>
+			  <input type="text" name="name" class="form-control" placeholder="File Name" required>
+			  <div class="invalid-feedback">
+				PLease provide a file name
+			  </div>
+			</div>
+			<div class="col-md-4 mb-3">
+		  <label for="validationCustom04">Type</label>
+		  <select name="type" class="custom-select" id="validationCustom04" required>
+			<option selected disable>Choose</option>
+			<option value="game"; >Game</option>
+			<option value="movie"; >Movie</option>
+			<option value="software"; >Software</option>
+			<option value="tvseries"; >TV Series</option>
+		  </select>
+		  <div class="invalid-feedback">
+			Please select a valid type
+		  </div>
+		</div>
+		  </div>
+		  <input type="submit" class="btn btn-primary" name="requestFile" value="submit" ></input>
+		  <a class="btn btn-danger" href="/login" role="button">Cancel</a>
+		</form>
 
 </body>
 </html>
